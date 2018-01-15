@@ -4,6 +4,9 @@
 #include <float.h>
 #include <cuda.h>
 
+// #define CPU_RESIDUAL
+#define GPU_RESIDUAL
+
 typedef struct {
     float posx;
     float posy;
@@ -35,8 +38,9 @@ void write_image( FILE * f, float *u,
 int coarsen(float *uold, unsigned oldx, unsigned oldy ,
 	    float *unew, unsigned newx, unsigned newy );
 
-
 __global__ void gpu_Heat (float *h, float *g, int N);
+__global__ void gpu_Diff (float *h, float *g, int N);
+__global__ void gpu_Reduce (float *h);
 
 #define NB 8
 #define min(a,b) ( ((a) < (b)) ? (a) : (b) )
@@ -214,26 +218,53 @@ int main( int argc, char *argv[] ) {
 
     float *dev_u, *dev_uhelp;
 
-    // TODO: Allocation on GPU for matrices u and uhelp
-    //...
+    // Allocation
+    cudaMalloc(&dev_u, np*np*sizeof(float));
+    cudaMalloc(&dev_uhelp, np*np*sizeof(float));
 
-    // TODO: Copy initial values in u and uhelp from host to GPU
-    //...
+    // Copy to Device
+    cudaMemcpy(dev_u, param.u, np*np*sizeof(float), cudaMemcpyHostToDevice);
+    cudaMemcpy(dev_uhelp, param.uhelp, np*np*sizeof(float), cudaMemcpyHostToDevice);
+
+	// When CPU_RESIDUAL and GPU_RESIDUAL not defined
+    	residual = 1;
+
+
+	dim3 blocksize(256); // create 1D threadblock
+    	dim3 gridsize(np*np/blocksize.x);  //create 1D grid
 
     iter = 0;
     while(1) {
         gpu_Heat<<<Grid,Block>>>(dev_u, dev_uhelp, np);
         cudaThreadSynchronize();                        // wait for all threads to complete
 
-        // TODO: residual is computed on host, we need to get from GPU values computed in u and uhelp
-        //...
+	#ifdef CPU_RESIDUAL
+        // Copy from device to compute residual on CPU
+	cudaMemcpy( param.u, dev_u, np*np*sizeof(float), cudaMemcpyDeviceToHost);
+	cudaMemcpy( param.uhelp, dev_uhelp, np*np*sizeof(float), cudaMemcpyDeviceToHost);
 	residual = cpu_residual (param.u, param.uhelp, np, np);
+	#endif
 
-	float * tmp = dev_u;
-	dev_u = dev_uhelp;
-	dev_uhelp = tmp;
+	#ifdef GPU_RESIDUAL
+	gpu_Diff<<<Grid, Block>>>(dev_u, dev_uhelp, np);
+	cudaThreadSynchronize();
+	gpu_Reduce<<<blocksize, gridsize>>>(dev_u);
+	cudaThreadSynchronize();
+	// NO SE LEEEE
+    	fprintf(stdout, "Convergence to residual=%f: %d iterations\n", residual, iter);
+	cudaMemcpy(&residual, &dev_u[0], sizeof(float), cudaMemcpyDeviceToHost);
+	#endif
+
+    	fprintf(stdout, "Convergence to residual=%f: %d iterations\n", residual, iter);
+
+
+	// float * tmp = dev_u;
+	// dev_u = dev_uhelp;
+	// dev_uhelp = tmp;
+
 
         iter++;
+        break;
 
         // solution good enough ?
         if (residual < 0.00005) break;
@@ -242,11 +273,13 @@ int main( int argc, char *argv[] ) {
         if (iter>=param.maxiter) break;
     }
 
-    // TODO: get result matrix from GPU
-    //...
+    // Copy from device
+	cudaMemcpy( param.u, dev_u, np*np*sizeof(float), cudaMemcpyDeviceToHost);
+	cudaMemcpy( param.uhelp, dev_uhelp, np*np*sizeof(float), cudaMemcpyDeviceToHost);
 
-    // TODO: free memory used in GPU
-    //...
+    // Free memory
+    cudaFree(dev_u);
+    cudaFree(dev_uhelp);
 
     cudaEventRecord( stop, 0 );     // instrument code to measue end time
     cudaEventSynchronize( stop );
