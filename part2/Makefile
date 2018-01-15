@@ -1,7 +1,7 @@
-CC     =  gcc 
-OMP    =  -fopenmp
-# CC     =  icc 
-# OMP    =  -openmp
+# CC     =  gcc
+# OMP    =  -fopenmp
+CC     =  icc
+OMP    =  -openmp
 
 OPT3 	= -O3
 CFLAGS  = -Wall -std=c99

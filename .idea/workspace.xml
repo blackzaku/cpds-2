@@ -10,66 +10,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="05ae2e1c-d255-4e91-a0d4-5b5e8531014f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/Assignment.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/README.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part1/Makefile" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/webServers.xml" />
       <change beforePath="" afterPath="$PROJECT_DIR$/part1/heat" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part1/heat-tareador.c" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part1/heat.c" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part1/heat.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part1/misc.c" />
       <change beforePath="" afterPath="$PROJECT_DIR$/part1/misc.o" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part1/run_dimemas.sh" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part1/run_tareador.sh" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part1/solver-tareador.c" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part1/solver.c" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part1/tareador.cfg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part1/test.dat" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part1/testgrind.dat" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part2/Makefile" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part2/extrae.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part2/heat-omp.c" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part2/heat.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part2/heat.ppm" />
       <change beforePath="" afterPath="$PROJECT_DIR$/part2/heatomp" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part2/misc.c" />
       <change beforePath="" afterPath="$PROJECT_DIR$/part2/misc.o" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part2/run_tests.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part2/scalability.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part2/solver-omp.c" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part2/submit-extrae.sh" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part2/submit-omp.sh" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part2/test_gauss.dat" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part2/test_jacobi.dat" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part2/test_redblack.dat" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part3/Makefile" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part3/extrae.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part3/heat-mpi.c" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part3/heat.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part3/heat.ppm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part3/heat_original.ppm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part3/heatmpi" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part3/misc.c" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/part3/heat-mpi.original.c" />
       <change beforePath="" afterPath="$PROJECT_DIR$/part3/misc.o" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part3/solver-mpi.c" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part3/submit-extrae-mpi.sh" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part3/submit-mpi.sh" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part3/test.dat" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part3/trace.sh" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part4/Makefile" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part4/extrae.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part4/heatCUDA.cu" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part4/kernels.cu" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part4/submit-extrae.sh" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part4/test.dat" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part4/trace.sh" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/part4/user-functions.dat" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/part3/run_tests.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/part3/test_gauss.dat" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/part3/test_jacobi.dat" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/part3/test_redblack.dat" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/part2/Makefile" afterPath="$PROJECT_DIR$/part2/Makefile" />
+      <change beforePath="$PROJECT_DIR$/part2/run_tests.py" afterPath="$PROJECT_DIR$/part2/run_tests.py" />
+      <change beforePath="$PROJECT_DIR$/part3/Makefile" afterPath="$PROJECT_DIR$/part3/Makefile" />
+      <change beforePath="$PROJECT_DIR$/part3/heat-mpi.c" afterPath="$PROJECT_DIR$/part3/heat-mpi.c" />
+      <change beforePath="$PROJECT_DIR$/part3/heat.ppm" afterPath="$PROJECT_DIR$/part3/heat.ppm" />
+      <change beforePath="$PROJECT_DIR$/part3/heat_original.ppm" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -81,21 +41,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="misc.c" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/part2/misc.c">
+      <file leaf-file-name="heat-mpi.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/part3/heat-mpi.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="-270">
+              <caret line="33" column="68" lean-forward="false" selection-start-line="33" selection-start-column="68" selection-end-line="33" selection-end-column="68" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="solver-omp.c" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/part2/solver-omp.c">
+      <file leaf-file-name="run_tests.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/part3/run_tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2790">
-              <caret line="155" column="19" lean-forward="false" selection-start-line="155" selection-start-column="19" selection-end-line="155" selection-end-column="19" />
+            <state relative-caret-position="288">
+              <caret line="18" column="96" lean-forward="false" selection-start-line="18" selection-start-column="96" selection-end-line="18" selection-end-column="96" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="heatCUDA.cu" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/part4/heatCUDA.cu">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-5546">
+              <caret line="224" column="16" lean-forward="false" selection-start-line="224" selection-start-column="8" selection-end-line="224" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="kernels.cu" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/part4/kernels.cu">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -104,30 +84,8 @@
       <file leaf-file-name="run_tests.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/part2/run_tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="solver-mpi.c" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/part3/solver-mpi.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1098">
-              <caret line="61" column="34" lean-forward="false" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="heat-mpi.c" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/part3/heat-mpi.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="49" column="63" lean-forward="false" selection-start-line="49" selection-start-column="63" selection-end-line="49" selection-end-column="63" />
+            <state relative-caret-position="306">
+              <caret line="43" column="22" lean-forward="true" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -136,8 +94,48 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="153">
+              <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Makefile" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/part2/Makefile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="heat-mpi.original.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/part3/heat-mpi.original.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3352">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Makefile" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/part3/Makefile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="8" column="10" lean-forward="false" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_redblack.dat" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/part3/test_redblack.dat">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -157,6 +155,14 @@
       <find>initialize</find>
       <find>run_loop</find>
       <find>Isend</find>
+      <find>FILE</find>
+      <find>visres</find>
+      <find>uvis</find>
+      <find>resfile</find>
+      <find>MPI_</find>
+      <find>resfilename</find>
+      <find>Nps are</find>
+      <find>gpu_Heat</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -165,8 +171,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/part2/run_tests.py" />
+        <option value="$PROJECT_DIR$/part3/test_redblack.dat" />
+        <option value="$PROJECT_DIR$/part3/Makefile" />
         <option value="$PROJECT_DIR$/part3/heat-mpi.c" />
+        <option value="$PROJECT_DIR$/part2/Makefile" />
+        <option value="$PROJECT_DIR$/part3/run_tests.py" />
+        <option value="$PROJECT_DIR$/part2/run_tests.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
@@ -216,6 +226,16 @@
               <item name="Assignment" type="462c0819:PsiDirectoryNode" />
               <item name="part2" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Assignment" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="Assignment" type="462c0819:PsiDirectoryNode" />
+              <item name="part3" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Assignment" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="Assignment" type="462c0819:PsiDirectoryNode" />
+              <item name="part4" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -224,7 +244,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="web.server" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/part3" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -257,12 +282,21 @@
       <option name="presentableId" value="Default" />
       <updated>1515496919667</updated>
       <workItem from="1515496922391" duration="7795000" />
-      <workItem from="1515516022350" duration="124000" />
+      <workItem from="1515516022350" duration="357000" />
+      <workItem from="1515758318716" duration="12377000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <created>1515516225239</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1515516225239</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7919000" />
+    <option name="totallyTimeSpent" value="20529000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -275,16 +309,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="638" y="0" width="1920" height="1053" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978903" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32861805" sideWeight="0.4957806" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32861805" sideWeight="0.5042194" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861805" sideWeight="0.49367088" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4243743" sideWeight="0.51476794" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5438787" sideWeight="0.49156117" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4243743" sideWeight="0.48523206" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -302,11 +336,67 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+  </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/part2/misc.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part2/solver-omp.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2790">
+          <caret line="155" column="19" lean-forward="false" selection-start-line="155" selection-start-column="19" selection-end-line="155" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part2/run_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/solver-mpi.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1098">
+          <caret line="61" column="34" lean-forward="false" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/heat-mpi.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="882">
+          <caret line="49" column="63" lean-forward="false" selection-start-line="49" selection-start-column="63" selection-end-line="49" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/part2/misc.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -328,7 +418,7 @@
         <state relative-caret-position="684">
           <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -367,48 +457,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/part2/myfig.png" />
-    <entry file="file://$PROJECT_DIR$/part2/run_tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/part4/user-functions.dat">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/part3/heat.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="38" column="7" lean-forward="true" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/part3/misc.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-810">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/part3/solver-mpi.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1098">
-          <caret line="61" column="34" lean-forward="false" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/part3/heat_original.ppm">
-      <provider selected="true" editor-type-id="images">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/part2/heat.ppm">
@@ -418,8 +471,92 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/part2/solver-omp.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2790">
+        <state relative-caret-position="390">
           <caret line="155" column="19" lean-forward="false" selection-start-line="155" selection-start-column="19" selection-end-line="155" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/misc.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="38" column="26" lean-forward="false" selection-start-line="38" selection-start-column="22" selection-end-line="40" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/original.ppm">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/solver-mpi.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-436">
+          <caret line="61" column="34" lean-forward="false" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/heat.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="49" column="7" lean-forward="false" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/trace.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/test_jacobi.dat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/test.dat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/test_gauss.dat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/heat_original.ppm">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/child_after.ppm">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/child.ppm">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/test_redblack.dat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -429,18 +566,82 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/part3/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="10" lean-forward="false" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/heat-mpi.original.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3352">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/part3/heat-mpi.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="49" column="63" lean-forward="false" selection-start-line="49" selection-start-column="63" selection-end-line="49" selection-end-column="63" />
+        <state relative-caret-position="-270">
+          <caret line="33" column="68" lean-forward="false" selection-start-line="33" selection-start-column="68" selection-end-line="33" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part2/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/run_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="18" column="96" lean-forward="false" selection-start-line="18" selection-start-column="96" selection-end-line="18" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/submit-extrae-mpi.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part4/kernels.cu">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part4/heatCUDA.cu">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5546">
+          <caret line="224" column="16" lean-forward="false" selection-start-line="224" selection-start-column="8" selection-end-line="224" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part2/run_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="43" column="22" lean-forward="true" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="153">
+          <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
           <folding />
         </state>
       </provider>

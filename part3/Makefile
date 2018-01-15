@@ -5,13 +5,16 @@ CFLAGS = -O3 -Wall -std=c99
 INCLE   = -I${EXTRAE_HOME}/include/ -I.
 LIBSE   = -L$(EXTRAE_HOME)/lib -lmpitrace -lxml2 
 
-ALL	= heatmpi 
+ALL	= heatmpi heatmpi-orig
 all: $(ALL)
 
 misc.o: misc.c
 	$(CC) -c $(CFLAGS) $< -o $@
 
 heatmpi: heat-mpi.c solver-mpi.c misc.o
+	$(MPICC) $(CFLAGS) -o $@ $+ -lm
+
+heatmpi-orig: heat-mpi.original.c solver-mpi.c misc.o
 	$(MPICC) $(CFLAGS) -o $@ $+ -lm
 
 clean:

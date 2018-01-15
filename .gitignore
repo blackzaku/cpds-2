@@ -59,6 +59,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+*.ppm
+# Binaries
+part2/heatomp
+part3/heatmpi-orig
+part3/heatmpi
 
-/part2/misc.o
-/part1/misc.o

@@ -12,6 +12,13 @@ void usage(char *s) {
             "Usage: %s <input file> [result file]\n\n", s);
 }
 
+void save_to_file(char *filename, double *u, int np_rows, int np_columns, int nprocs) {
+    double *uvis=(double*)calloc( sizeof(double), ((256/nprocs)+2) * (256+2) );
+    FILE *auxfile = fopen(filename, "w");
+    coarsen(u, np_columns, np_rows, uvis, 256 + 2, (256/nprocs) + 2);
+    write_image(auxfile, uvis, 256 + 2, (256/nprocs) + 2);
+}
+
 int run_loop(int algorithm, double *u, double *uhelp, int np_rows, int np_columns, double *all_residual, int maxiter,
                      int myid, int numprocs) {
     MPI_Request request;
@@ -24,10 +31,10 @@ int run_loop(int algorithm, double *u, double *uhelp, int np_rows, int np_column
                 // Copy uhelp into u
                 for (int i = 0; i < np_rows; i++)
                     for (int j = 0; j < np_columns; j++)
-                        u[i * np_rows + j] = uhelp[i * np_rows + j];
+                        u[i * np_columns + j] = uhelp[i * np_columns + j];
                 break;
             case 1: // RED-BLACK
-                residual = relax_redblack(u, np_rows, np_columns);
+                residual = relax_redblack(u, np_rows, np_columns); // np_rows, np_columns);
                 break;
             case 2: // GAUSS
                 residual = relax_gauss(u, np_rows, np_columns);
@@ -83,7 +90,7 @@ int main(int argc, char *argv[]) {
 
         // algorithmic parameters
         algoparam_t param;
-        int np, np_rows, np_columns;
+        int np, np_rows, np_columns, rows;
 
         double runtime, flop;
         double residual = 0.0;
@@ -137,9 +144,11 @@ int main(int argc, char *argv[]) {
 
         // full size (param.resolution are only the inner points)
         np = param.resolution + 2;
-
+        rows = param.resolution/numprocs;
         np_columns = param.resolution + 2;
-        np_rows = (param.resolution / numprocs) + 2;
+        np_rows = rows + 2;
+
+        // save_to_file("original.ppm", param.u, param.visres + 2, param.visres + 2, 1); // DEBUG
 
         // starting time
         runtime = wtime();
@@ -150,13 +159,21 @@ int main(int argc, char *argv[]) {
                 MPI_Send(&param.maxiter, 1, MPI_INT, i, 0, MPI_COMM_WORLD);
                 MPI_Send(&param.resolution, 1, MPI_INT, i, 0, MPI_COMM_WORLD);
                 MPI_Send(&param.algorithm, 1, MPI_INT, i, 0, MPI_COMM_WORLD);
-                MPI_Send(&param.u[np_columns * ((np_rows - 1) * i)], np_rows * np_columns, MPI_DOUBLE, i, 0, MPI_COMM_WORLD);
-                MPI_Send(&param.uhelp[np_columns * ((np_rows - 1) * i)], np_rows * np_columns, MPI_DOUBLE, i, 0, MPI_COMM_WORLD);
+                MPI_Send(&param.u[np_columns * rows * i], np_rows * np_columns, MPI_DOUBLE, i, 0, MPI_COMM_WORLD);
+                MPI_Send(&param.uhelp[np_columns * rows * i], np_rows * np_columns, MPI_DOUBLE, i, 0, MPI_COMM_WORLD);
             }
         }
 
 
         iter=run_loop(param.algorithm, param.u, param.uhelp, np_rows, np_columns , &residual, param.maxiter, myid, numprocs);
+
+        // receive results from workers
+        for (int i = 0; i < numprocs; i++) {
+            if (i > 0) {
+                MPI_Recv(&param.u[np_columns * (rows * i + 1)], rows * np_columns, MPI_DOUBLE, i, 0, MPI_COMM_WORLD, &status);
+            }
+        }
+
 
         // Flop count after iter iterations
         flop = iter * 11.0 * param.resolution * param.resolution;
@@ -196,6 +213,7 @@ int main(int argc, char *argv[]) {
         int algorithm;
         double residual = 0;
 
+
         MPI_Recv(&maxiter, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
         MPI_Recv(&columns, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
         MPI_Recv(&algorithm, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
@@ -206,8 +224,8 @@ int main(int argc, char *argv[]) {
         np_rows = rows + 2;
 
         // allocate memory for worker
-        double *u = calloc(sizeof(double), (rows + 2) * (columns + 2));
-        double *uhelp = calloc(sizeof(double), (rows + 2) * (columns + 2));
+        double *u = calloc(sizeof(double), np_rows * np_columns);
+        double *uhelp = calloc(sizeof(double), np_rows * np_columns);
         if ((!u) || (!uhelp)) {
             fprintf(stderr, "Error: Cannot allocate memory\n");
             return 0;
@@ -217,7 +235,13 @@ int main(int argc, char *argv[]) {
         MPI_Recv(&u[0], np_rows*np_columns, MPI_DOUBLE, 0, 0, MPI_COMM_WORLD, &status);
         MPI_Recv(&uhelp[0], np_rows*np_columns, MPI_DOUBLE, 0, 0, MPI_COMM_WORLD, &status);
 
+        // save_to_file("child.ppm", u, np_rows, np_columns, numprocs); // DEBUG
+
         iter=run_loop(algorithm, u, uhelp, np_rows, np_columns, &residual, maxiter, myid, numprocs);
+
+        // save_to_file("child_after.ppm", u, np_rows, np_columns, numprocs); // DEBUG
+
+        MPI_Send(&u[np_columns], rows * np_columns, MPI_DOUBLE, 0, 0, MPI_COMM_WORLD);
 
         if (u) free(u);
         if (uhelp) free(uhelp);
