@@ -64,4 +64,4 @@ dkms.conf
 part2/heatomp
 part3/heatmpi-orig
 part3/heatmpi
-
+part4/heatCUDA
