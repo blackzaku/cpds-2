@@ -4,9 +4,6 @@
 #include <float.h>
 #include <cuda.h>
 
-// #define CPU_RESIDUAL
-#define GPU_RESIDUAL
-
 typedef struct {
     float posx;
     float posy;
@@ -236,23 +233,34 @@ int main(int argc, char *argv[]) {
         gpu_Heat <<< Grid, Block >>> (dev_u, dev_uhelp, np);
         cudaThreadSynchronize();                        // wait for all threads to complete
 
+
+
+// #define CPU_RESIDUAL
+#define GPU_RESIDUAL
+
 #ifdef CPU_RESIDUAL
         // Copy from device to compute residual on CPU
         cudaMemcpy( param.u, dev_u, np*np*sizeof(float), cudaMemcpyDeviceToHost);
         cudaMemcpy( param.uhelp, dev_uhelp, np*np*sizeof(float), cudaMemcpyDeviceToHost);
         residual = cpu_residual (param.u, param.uhelp, np, np);
+        fprintf(stdout, "Convergence to residual=%f: %d iterations\n", residual, iter);
 #endif
 
 #ifdef GPU_RESIDUAL
         gpu_Diff <<< Grid, Block >>> (dev_u, dev_uhelp, np);
         cudaThreadSynchronize();
-        // gpu_Reduce<<<ceil(np*np/256), 256>>>(dev_u, np*np, 1);
-        // gpu_Reduce<<<ceil(np*np/(256*256)), 256>>>(dev_u, np*np, 256);
-        gpu_Reduce_Atomic <<< ceil(np * np / 256), 256 >>> (dev_u, np * np);
+        
+        int auxN = np;
+        for (int scale = 1; auxN > Block_Dim; scale *= Block_Dim) {
+            int grid = auxN / Block_Dim + ((auxN % Block_Dim) != 0);
+            dim3 AuxGrid(grid, grid);
+            gpu_Reduce<<<AuxGrid, Block>>>(dev_u, np, scale);
+            auxN = ceil(auxN / Block_Dim);
+        }
+        
+        //gpu_Reduce_Atomic <<< ceil(np * np / 256), 256 >>> (dev_u, np * np);
         cudaThreadSynchronize();
-        // NO SE LEEEE
-        fprintf(stdout, "Convergence to residual=%f: %d iterations\n", residual, iter);
-        cudaMemcpy(&residual, dev_u, sizeof(float), cudaMemcpyDeviceToHost);
+        cudaMemcpy(&residual, &dev_u[np + 1], sizeof(float), cudaMemcpyDeviceToHost);
 #endif
 
         fprintf(stdout, "Convergence to residual=%f: %d iterations\n", residual, iter);
@@ -264,7 +272,6 @@ int main(int argc, char *argv[]) {
 
 
         iter++;
-        //    break;
 
         // solution good enough ?
         if (residual < 0.00005) break;
