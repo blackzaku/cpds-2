@@ -16,7 +16,7 @@ def get_mean_time(solver, times, n):
     return avg
 
 def get_time(solver, n):
-    output = subprocess.Popen(["mpiexec", "-n {n} heatmpi test_{solver}.dat".format(n=n, solver=solver)],
+    output = subprocess.Popen(["mpiexec", "-n {n} heatmpi ../tests/test_{solver}.dat".format(n=n, solver=solver)],
                               stdout=subprocess.PIPE).communicate()[0]
     matched = re.search("Time:\s+(\d+\.\d+)", str(output))
     return float(matched.group(1))

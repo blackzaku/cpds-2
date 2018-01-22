@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"deploy": {
+			"deployOnSave": true,
+			"deployOnChange": true,
+			"targets": [
+				{
+					"type": "sftp",
+					"name": "Minotauro",
+					"dir": "/home/cpds92/cpds92004/Assignment",
+					"user": "cpds92004",
+					"host": "mt1.bsc.es",
+					"port": 22,
+					"password": "m3d1s0la"
+				}
+			]
+		}
+	}
+}

@@ -2,7 +2,7 @@
 #include <float.h>
 #include <cuda.h>
 
-#define BLOCK_SIZE 512
+#define BLOCK_SIZE 256
 
 __global__ void gpu_Reduce (float *s, int N, int skip) {
 	__shared__ float sdata[BLOCK_SIZE];

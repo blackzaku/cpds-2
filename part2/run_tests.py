@@ -15,7 +15,7 @@ def get_mean_time(solver, times):
     return avg
 
 def get_time(solver):
-    output = subprocess.Popen(["./heatomp", "test_{solver}.dat".format(solver=solver)],
+    output = subprocess.Popen(["./heatomp", "../tests/test_{solver}.dat".format(solver=solver)],
                               stdout=subprocess.PIPE).communicate()[0]
     matched = re.search("Time:\s+(\d+\.\d+)", str(output))
     return float(matched.group(1))

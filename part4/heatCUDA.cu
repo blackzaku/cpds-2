@@ -4,8 +4,6 @@
 #include <float.h>
 #include <cuda.h>
 
-#define BLOCK_SIZE 512
-
 typedef struct {
     float posx;
     float posy;
@@ -220,33 +218,22 @@ int main(int argc, char *argv[]) {
     cudaMalloc(&dev_u, np * np * sizeof(float));
     cudaMalloc(&dev_uhelp, np * np * sizeof(float));
 
-
-    // #define CPU_RESIDUAL
-    // #define GPU_RESIDUAL
-    #define GPU_RESIDUAL_REDUCE
-    // #define GPU_RESIDUAL_ATOMIC
-
-    #ifdef GPU_RESIDUAL
+    #if defined RESIDUAL_GPU_DIFF
     // Allocate for auxiliar
     int Grid1D = ceil(float(np * np) / BLOCK_SIZE);
     float *dev_sum, sum[Grid1D];
     cudaMalloc(&dev_sum, Grid1D * sizeof(float));
-    #endif
-
-    #ifdef GPU_RESIDUAL_REDUCE
+    #elif defined RESIDUAL_GPU_REDUCE
     // Allocate for auxiliar
     float *dev_sum;
     int Grid1D = ceil(float(np * np) / BLOCK_SIZE);
     cudaMalloc(&dev_sum, Grid1D * sizeof(float));
-    #endif
-
-    #ifdef GPU_RESIDUAL_ATOMIC
+    #elif defined RESIDUAL_GPU_ATOMIC
     // Allocate for auxiliar
     float *dev_sum;
     int Grid1D = ceil(float(np * np) / BLOCK_SIZE);
     cudaMalloc(&dev_sum, sizeof(int));
     #endif
-
 
 
     // Copy to Device
@@ -258,24 +245,19 @@ int main(int argc, char *argv[]) {
         gpu_Heat <<< Grid, Block >>> (dev_u, dev_uhelp, np);
         cudaThreadSynchronize();                        // wait for all threads to complete
 
-#ifdef CPU_RESIDUAL
+#if defined RESIDUAL_CPU
         // Copy from device to compute residual on CPU
         cudaMemcpy( param.u, dev_u, np*np*sizeof(float), cudaMemcpyDeviceToHost);
         cudaMemcpy( param.uhelp, dev_uhelp, np*np*sizeof(float), cudaMemcpyDeviceToHost);
         residual = cpu_residual (param.u, param.uhelp, np, np);
-#endif
-
-#ifdef GPU_RESIDUAL
+#elif defined RESIDUAL_GPU_DIFF
         residual = 0;
         gpu_Diff_Reduce <<< Grid1D, BLOCK_SIZE >>> (dev_u, dev_uhelp, dev_sum, np);
         cudaThreadSynchronize();
         cudaMemcpy(&sum, dev_sum, Grid1D*sizeof(float), cudaMemcpyDeviceToHost);
         for (int i =0; i < Grid1D; i++) residual += sum[i];
         cudaMemcpy(&residual, dev_sum, sizeof(float), cudaMemcpyDeviceToHost);    
-#endif
-
-
-#ifdef GPU_RESIDUAL_REDUCE
+#elif defined RESIDUAL_GPU_REDUCE
         residual = 0;
         gpu_Diff_Reduce <<< Grid1D, BLOCK_SIZE >>> (dev_u, dev_uhelp, dev_sum, np);
         cudaThreadSynchronize();
@@ -285,16 +267,14 @@ int main(int argc, char *argv[]) {
             gpu_Reduce <<< grid, BLOCK_SIZE >>> (dev_sum, np, skip);
             cudaThreadSynchronize();
         }
-        cudaMemcpy(&residual, dev_sum, sizeof(float), cudaMemcpyDeviceToHost);
-        
-#endif
-
-
-#ifdef GPU_RESIDUAL_ATOMIC
+        cudaMemcpy(&residual, dev_sum, sizeof(float), cudaMemcpyDeviceToHost);    
+#elif defined RESIDUAL_GPU_ATOMIC
         cudaMemset(dev_sum, 0, sizeof(float));
         gpu_Diff_Reduce_Atomic <<< Grid1D, BLOCK_SIZE >>> (dev_u, dev_uhelp, dev_sum, np);
         cudaThreadSynchronize();
         cudaMemcpy(&residual, dev_sum, sizeof(float), cudaMemcpyDeviceToHost);
+#else
+        #error "Residual mode must be defined"
 #endif
 
         // fprintf(stdout, "Convergence to residual=%f: %d iterations\n", residual, iter);
