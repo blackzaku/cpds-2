@@ -218,22 +218,22 @@ int main(int argc, char *argv[]) {
     cudaMalloc(&dev_u, np * np * sizeof(float));
     cudaMalloc(&dev_uhelp, np * np * sizeof(float));
 
-    #if defined RESIDUAL_GPU_DIFF
+#if defined RESIDUAL_GPU_DIFF
     // Allocate for auxiliar
     int Grid1D = ceil(float(np * np) / BLOCK_SIZE);
     float *dev_sum, sum[Grid1D];
     cudaMalloc(&dev_sum, Grid1D * sizeof(float));
-    #elif defined RESIDUAL_GPU_REDUCE
+#elif defined RESIDUAL_GPU_REDUCE
     // Allocate for auxiliar
     float *dev_sum;
     int Grid1D = ceil(float(np * np) / BLOCK_SIZE);
     cudaMalloc(&dev_sum, Grid1D * sizeof(float));
-    #elif defined RESIDUAL_GPU_ATOMIC
+#elif defined RESIDUAL_GPU_ATOMIC
     // Allocate for auxiliar
     float *dev_sum;
     int Grid1D = ceil(float(np * np) / BLOCK_SIZE);
     cudaMalloc(&dev_sum, sizeof(int));
-    #endif
+#endif
 
 
     // Copy to Device
@@ -256,7 +256,6 @@ int main(int argc, char *argv[]) {
         cudaThreadSynchronize();
         cudaMemcpy(&sum, dev_sum, Grid1D*sizeof(float), cudaMemcpyDeviceToHost);
         for (int i =0; i < Grid1D; i++) residual += sum[i];
-        cudaMemcpy(&residual, dev_sum, sizeof(float), cudaMemcpyDeviceToHost);    
 #elif defined RESIDUAL_GPU_REDUCE
         residual = 0;
         gpu_Diff_Reduce <<< Grid1D, BLOCK_SIZE >>> (dev_u, dev_uhelp, dev_sum, np);
