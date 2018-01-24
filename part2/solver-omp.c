@@ -91,9 +91,16 @@ double relax_redblack (double *u, unsigned sizex, unsigned sizey)
     return sum;
 }
 /*
-double relax_redblack (double *u, unsigned sizex, unsigned sizey)
+ * Blocked Red-Black solver: one iteration step
+ * BRBRBRBR...
+ * RBRBRBRB...
+ * BRBRBRBR...
+ * ...
+ */
+double relax_redblack_alternative (double *u, unsigned sizex, unsigned sizey)
 {
     double unew, diff, sum=0.0;
+    int semaphores[NB] = {};
     int nbx, bx, nby, by;
     int lsw;
 
@@ -102,41 +109,52 @@ double relax_redblack (double *u, unsigned sizex, unsigned sizey)
     nby = NB;
     by = sizey/nby;
     // Computing "Red" blocks
-    for (int ii=0; ii<nbx; ii++) {
-        lsw = ii%2;
-        for (int jj=lsw; jj<nby; jj=jj+2) 
-            for (int i=1+ii*bx; i<=min((ii+1)*bx, sizex-2); i++) 
-                for (int j=1+jj*by; j<=min((jj+1)*by, sizey-2); j++) {
-	            unew= 0.25 * (    u[ i*sizey	+ (j-1) ]+  // left
-				      u[ i*sizey	+ (j+1) ]+  // right
-				      u[ (i-1)*sizey	+ j     ]+  // top
-				      u[ (i+1)*sizey	+ j     ]); // bottom
-	            diff = unew - u[i*sizey+ j];
-	            sum += diff * diff; 
-	            u[i*sizey+j]=unew;
-	        }
-    }
+    #pragma omp parallel
+    {
+        #pragma omp for private(unew) reduction(+:sum)
+        for (int ii=0; ii<nbx; ii++) {
+            lsw = ii%2;
+            for (int jj=lsw; jj<nby; jj=jj+2) 
+                for (int i=1+ii*bx; i<=min((ii+1)*bx, sizex-2); i++) 
+                    for (int j=1+jj*by; j<=min((jj+1)*by, sizey-2); j++) {
+	                unew= 0.25 * (    u[ i*sizey	+ (j-1) ]+  // left
+				          u[ i*sizey	+ (j+1) ]+  // right
+				          u[ (i-1)*sizey	+ j     ]+  // top
+				          u[ (i+1)*sizey	+ j     ]); // bottom
+	                diff = unew - u[i*sizey+ j];
+	                sum += diff * diff; 
+	                u[i*sizey+j]=unew;
+	            }
+            
+            semaphores[ii] = 1;
+            #pragma omp flush
+        }
 
-    // Computing "Black" blocks
-    for (int ii=0; ii<nbx; ii++) {
-        lsw = (ii+1)%2;
-        for (int jj=lsw; jj<nby; jj=jj+2) 
-            for (int i=1+ii*bx; i<=min((ii+1)*bx, sizex-2); i++) 
-                for (int j=1+jj*by; j<=min((jj+1)*by, sizey-2); j++) {
-	            unew= 0.25 * (    u[ i*sizey	+ (j-1) ]+  // left
-				      u[ i*sizey	+ (j+1) ]+  // right
-				      u[ (i-1)*sizey	+ j     ]+  // top
-				      u[ (i+1)*sizey	+ j     ]); // bottom
-	            diff = unew - u[i*sizey+ j];
-	            sum += diff * diff; 
-	            u[i*sizey+j]=unew;
-	        }
+        // Computing "Black" blocks
+        #pragma omp for private(unew) reduction(+:sum) nowait
+        for (int ii=0; ii<nbx; ii++) {
+            #pragma omp flush
+            while ((ii > 0 && semaphores[ii - 1] == 0) ||
+                   (ii < nbx-1 && semaphores[ii + 1] == 0))
+            {
+                #pragma omp flush
+            }
+            lsw = (ii+1)%2;
+            for (int jj=lsw; jj<nby; jj=jj+2) 
+                for (int i=1+ii*bx; i<=min((ii+1)*bx, sizex-2); i++) 
+                    for (int j=1+jj*by; j<=min((jj+1)*by, sizey-2); j++) {
+	                unew= 0.25 * (    u[ i*sizey	+ (j-1) ]+  // left
+				          u[ i*sizey	+ (j+1) ]+  // right
+				          u[ (i-1)*sizey	+ j     ]+  // top
+				          u[ (i+1)*sizey	+ j     ]); // bottom
+	                diff = unew - u[i*sizey+ j];
+	                sum += diff * diff; 
+	                u[i*sizey+j]=unew;
+	            }
+        }
     }
-
     return sum;
 }
-*/
-
 
 /*
  * Blocked Gauss-Seidel solver: one iteration step
@@ -180,29 +198,3 @@ double relax_gauss (double *u, unsigned sizex, unsigned sizey)
 
     return sum;
 }
-/*
-double relax_gauss (double *u, unsigned sizex, unsigned sizey)
-{
-    double unew, diff, sum=0.0;
-    int nbx, bx, nby, by;
-
-    nbx = NB;
-    bx = sizex/nbx;
-    nby = NB;
-    by = sizey/nby;
-    for (int ii=0; ii<nbx; ii++)
-        for (int jj=0; jj<nby; jj++) 
-            for (int i=1+ii*bx; i<=min((ii+1)*bx, sizex-2); i++) 
-                for (int j=1+jj*by; j<=min((jj+1)*by, sizey-2); j++) {
-	            unew= 0.25 * (    u[ i*sizey	+ (j-1) ]+  // left
-				      u[ i*sizey	+ (j+1) ]+  // right
-				      u[ (i-1)*sizey	+ j     ]+  // top
-				      u[ (i+1)*sizey	+ j     ]); // bottom
-	            diff = unew - u[i*sizey+ j];
-	            sum += diff * diff; 
-	            u[i*sizey+j]=unew;
-                }
-
-    return sum;
-}
-*/

@@ -49,6 +49,8 @@ double wtime();
 // solvers in solver.c
 double relax_redblack( double *u, 
 		  unsigned sizex, unsigned sizey );
+double relax_redblack_alternative( double *u, 
+		  unsigned sizex, unsigned sizey );
 
 double relax_gauss( double *u, 
 		  unsigned sizex, unsigned sizey );
